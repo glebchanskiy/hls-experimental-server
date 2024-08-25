@@ -1,0 +1,13 @@
+services:
+  streamer-rust-minio:
+    image: minio/minio
+    container_name: "streamer-rust-minio"
+    ports:
+      - 9000:9000
+      - 9001:9001
+    environment:
+      - MINIO_ACCESS_KEY=minio1234567890
+      - MINIO_SECRET_KEY=minio1234567890
+    volumes:
+      - ./storage:/data
+    command: server --console-address ":9001" /data
